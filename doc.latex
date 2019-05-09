@@ -1,0 +1,119 @@
+\documentclass{article}
+
+% Bold mathematical symbols. 
+\usepackage{amsbsy}
+\usepackage{amsmath}
+\usepackage{setspace}
+\doublespacing
+
+\begin{document}
+
+\section*{Review of the Basics}
+
+\subsection*{What is a scattering cross section?  What is a differential cross section?}
+A cross section describes the effective area of a target for interacting with a particle, and is measured in units of barns ($10^{-28} m^2 = 1 \; Barn$).  The differential cross section requires the definition of the solid angle: 
+
+\begin{equation}
+	d\Omega = \sin\theta d\theta d\phi 
+	\label{e:solid-angle}
+\end{equation}
+
+The differential cross section is the effective area of a target for interacting with a particle and scattering into the solid angle $d\Omega$.  The cross section can be obtained by integrating the differential cross section over the solid angle. 
+
+\begin{equation}
+	\sigma = \int_{0}^{\pi} \sin \theta d\theta \int_{0}^{2\pi} \frac{d\sigma}{d\Omega} d\phi 
+	\label{e:cross-section-differential-cross-section-relation}
+\end{equation}
+
+\subsection*{Describe electron scattering from protons at various energy scales}
+The nature of electron proton scattering depends on the wavelength of the virtual photon in comparison with the radius of the proton.  At very low energies ($\lambda \gg r_p$) the scattering is effectively described by elastic scattering of the electron in a static potential of an effectively point-like proton.  If the electron is non-relativistic the differential cross section is described by Rutherford.
+
+\begin{equation}
+	\left( \frac{d\sigma}{d\Omega} \right)_{Rutherford} = \frac{\alpha^2}{16 E_{K}^{2} \sin^4 (\theta/2)}
+	\label{e:rutherford}
+\end{equation}
+
+The energy of the electron is the non-relativistic kinematic energy.  When the electron is relativistic, but $\lambda \gg r_p$ still applies, the Mott cross section describes the reaction properly.
+
+\begin{equation}
+	\left( \frac{d\sigma}{d\Omega} \right)_{Mott} = \frac{\alpha^2}{4 E^{2} \sin^4 (\theta/2)} \cos^2 (\theta/2)
+	\label{e:mott}
+\end{equation}
+
+Both of these formulas can be derived using a point-like proton and never making mention of spin, implying that at these energies the \textit{possible} spin-spin magnetic interaction is negligable.  As the electron energy increases $\lambda \approx r_p$, \textit{form factors} are introduced to describe the finite spatial extent of the proton's charge distribution.  
+
+\begin{equation}
+	F(\boldsymbol{q}^2) = \int \rho(\boldsymbol{r}) e^{i\boldsymbol{q \cdot r}} d^3\boldsymbol{r}
+	\label{e:ff}
+\end{equation}
+
+The form factor is simply the three dimensional Fourier transform of the charge distribution of the proton, and the Mott cross section \ref{e:mott} can be modified to reflect.
+
+\begin{equation}
+	\left( \frac{d\sigma}{d\Omega} \right)_{Mott} = \frac{\alpha^2}{4 E^{2} \sin^4 (\theta/2)} \cos^2 (\theta/2) |F(\boldsymbol{q}^2)|^2
+	\label{e:mottff}
+\end{equation}
+
+Equation \ref{e:mottff} can also be used for modeling scattering from heavier nuclei.  It can be shown that the most general lorentz invariant form of elastic electron-proton scattering is described in terms of two form factors; $G_E(Q^2)$ describes the proton's charge distribution, while $G_M(Q^2)$ describes the magnetic moment distribution.  The cross section is given by the Rosenbluth formula.
+
+\begin{equation}
+	\left( \frac{d\sigma}{d\Omega} \right)_{Rosenbluth} = \frac{\alpha^2}{4 E_1^{2} \sin^4 (\theta/2)} \frac{E_3}{E_1} \left[ \frac{G_E^2 + \tau G_M^2}{1 + \tau} \cos^2(\theta/2) + 2\tau G_M^2 \sin^2(\theta/2) \right]
+	\label{e:rosenbluth}
+\end{equation}
+
+Where $E_1$ is the incident electron energy, and $E_3$ is the scattered electron energy and the term $\tau = \frac{Q^2}{4m_p^2}$.  In general, a good model for the proton charge distribution is given by $\rho(r) = \rho_0 e^{-r/a}$, with the parameters being determined experimentally. 
+
+When the wavelength of the virtual photon becomes small $\lambda < r_p$, the elastic scattering cross section also becomes small.  The dominant process is inelastic scattering where the virtual photon interacts with a consituent quark inside the proton and the proton subsequently breaks up.  At very high electron energies $\lambda \ll r_p$, the virtual photon resolves the detailed dynamic structure of the proton, which appears to be a sea of strongly interacting quarks and gluons.  The cross section for this deeply inelastic scattering (DIS) is described in terms of two structure functions $F_1(x,Q^2)$ and $F_2(x,Q^2)$.  
+
+\begin{equation}
+	\frac{d\sigma}{dx dQ^2} = \frac{4\pi\alpha^2}{Q^4} \left[ \left( 1 - y - \frac{m_p^2 y^2}{Q^2} \right) \frac{F_2(x,Q^2)}{x} + y^2 F_1(x,Q^2)\right]
+	\label{e:dis}
+\end{equation}
+
+The electron kinematics are described by the four momentum transfer $q^{\mu} = l^{\mu} - l'^{\mu}$, the negative momentum transfer $Q^2 = - q^{\mu} q_{\mu}$ and $x$ and $y$ are given below.
+
+\begin{align}
+  x = \frac{Q^{2}}{2P \cdot q} && y = \frac{P \cdot q}{P \cdot l}
+\end{align}
+
+For DIS kinematics $Q^2 \gg m_p^2 y^2$ and the cross section \ref{e:dis} reduces to a more compact form.
+\begin{equation}
+	\frac{d\sigma}{dx dQ^2} \approx \frac{4\pi\alpha^2}{Q^4} \left[ \left( 1 - y \right) \frac{F_2(x,Q^2)}{x} + y^2 F_1(x,Q^2)\right]
+	\label{e:dis-reduced}
+\end{equation}
+
+There is much more that can be said on the topic of DIS, including the Bjorken scaling of the structure functions $F(x,Q^2) \rightarrow F(x)$, but I don't find the need to dive deep into those details in this whirlwind overview of electron scattering.
+
+\subsection*{What is a magnetic dipole moment?  What do different theories predict for the magnetic moment of electrons and protons?}
+The magnetic dipole moment of a spinning charge is related to its (spin) angular momentum.  The magnetic dipole moment can be used as in interaction term in the Hamiltonian according to the following relation, where $\boldsymbol{B}$ is the magnetic field vector.  
+
+\begin{equation}
+	H = - \boldsymbol{\mu \cdot B} 
+	\label{e:mminteraction}
+\end{equation}
+
+The classical calculation for a charged particle with spin gives,
+
+\begin{equation}
+	\boldsymbol{\mu} = \frac{q}{2m} \boldsymbol{S}
+\end{equation}
+
+where $m$ is the particle mass and $q$ is the particle charge.  Dirac showed (following the conclusions of the Dirac equation) that for point-like Dirac Fermions, the magnetic moment is actually twice the classical value.
+
+\begin{equation}
+	\boldsymbol{\mu} = \frac{q}{m} \boldsymbol{S}
+\end{equation}
+
+Radiative corrections in QED lead to further slight refinement of this value, 
+
+\begin{equation}
+	g = 2 + \frac{\alpha}{\pi} + \mathcal{O}(\alpha^2)
+\end{equation}
+
+where the $g$ value is mutliplied by the classical formula to predict the magnetic moment (Dirac theory says $g = 2$), which is in precise agreement with experimental measurements for the electron.  The proton however, is composed of quarks and therefore its magnetic moment is not that of a Dirac Fermion, but the combination of the magnetic moments of the sea of constituents.  The observation of the proton's magnetic moment is strong evidence that it is not a point-like particle.  In electron scattering experiments at low energy where $Q^2 \ll 4m_p^2$ the form factor $G_M$ can be seen as the Fourier transform of magnetic moment of the proton. 
+
+\begin{equation}
+	G_M (Q^2) \approx G_M(\boldsymbol{q}^2) = \int \mu(\boldsymbol{r}) e^{i\boldsymbol{q \cdot r}} d^3\boldsymbol{r}
+\end{equation}
+
+\end{document}
